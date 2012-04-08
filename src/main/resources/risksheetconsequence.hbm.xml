@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ro.rmc.riskeval.domain">
+	<class name="RiskSheetConsequence" table="RISKSHEETCONSEQUENCES" lazy="false">
+		<id name="id" column="ID">
+			<generator class="native" />
+		</id>
+		
+		<many-to-one name="consequence" class="Consequence" column="FK_id_consequence" />
+		<many-to-one name="consequenceLocation" class="ConsequenceLocation" column="FK_id_consequencelocation" />
+		<many-to-one name="riskSheet" class="RiskSheet" column="FK_id_risksheet" />
+	</class>
+</hibernate-mapping>

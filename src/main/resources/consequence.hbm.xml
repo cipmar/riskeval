@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ro.rmc.riskeval.domain">
+	<class name="Consequence" table="CONSEQUENCE" lazy="false">
+		<id name="id" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="code" column="CODE" />
+		<property name="name" column="NAME" />
+		<set name="consequenceLocations" lazy="false" inverse="true">
+			<key column="FK_ID_CONSEQUENCE" />
+			<one-to-many class="ClgCouple" />
+		</set>
+	</class>
+</hibernate-mapping>

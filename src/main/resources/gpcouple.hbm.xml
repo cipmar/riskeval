@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ro.rmc.riskeval.domain">
+	<class name="GpCouple" table="GPCOUPLE" lazy="false">
+		<id name="id" column="ID">
+			<generator class="native"></generator>
+		</id>
+
+		<many-to-one name="gravity" column="FK_id_gravity"
+			class="Gravity">
+		</many-to-one>
+
+		<many-to-one name="probability" column="FK_id_probability"
+			class="Probability">
+		</many-to-one>
+	</class>
+</hibernate-mapping>

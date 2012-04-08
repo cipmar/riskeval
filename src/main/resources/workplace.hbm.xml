@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ro.rmc.riskeval.domain">
+
+	<class name="WorkPlace" table="WORKPLACE" lazy="false">
+		<id name="id" column="ID">
+			<generator class="native" />
+		</id>
+
+		<property name="name" column="NAME" />
+		<property name="personsNo" column="PERSONS_NO" />
+		<property name="operations" column="OPERATIONS" />
+		<property name="workingHours" column="WORKING_HOURS" />
+		<property name="evaluationTeam" column="EVALUATION_TEAM" />
+
+		<many-to-one name="sector" column="FK_id_sector" class="Sector" />
+
+		<set name="riskSheets" lazy="true">
+			<key column="FK_ID_WORKPLACE" />
+			<one-to-many class="RiskSheet" />
+		</set>
+	</class>
+</hibernate-mapping>

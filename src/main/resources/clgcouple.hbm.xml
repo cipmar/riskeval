@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ro.rmc.riskeval.domain">
+	<class name="ClgCouple" table="CLGCOUPLE" lazy="false">
+		<id name="id" column="ID">
+			<generator class="native"></generator>
+		</id>
+
+		<many-to-one name="consequenceLocation"
+			column="FK_id_consequence_location" class="ConsequenceLocation" />
+
+		<many-to-one name="gravity" column="FK_id_gravity"
+			class="Gravity" />
+
+		<many-to-one name="consequence" column="FK_id_consequence"
+			class="Consequence" />
+
+	</class>
+</hibernate-mapping>

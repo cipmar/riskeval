@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ro.rmc.riskeval.domain">
+	<class name="RiskSheet" table="RISKSHEET" lazy="false">
+		<id name="id" column="ID">
+			<generator class="native" />
+		</id>
+
+		<property name="manifestation" column="MANIFESTATION" />
+		<property name="measures" column="MEASURES" />
+		<property name="competence" column="COMPETENCE" />
+		<property name="terms" column="TERMS" />
+		
+		<many-to-one name="gravity" class="Gravity" column="FK_ID_GRAVITY"/>
+		<many-to-one name="probability" class="Probability" column="FK_ID_PROBABILITY" />
+		<many-to-one name="riskLevel" class="RiskLevel" column="FK_ID_RISKLEVEL" />
+		<many-to-one name="workPlace" class="WorkPlace" column="FK_ID_WORKPLACE" />
+		<many-to-one name="riskFactor" class="RiskFactor" column="FK_ID_RISKFACTOR" />
+		
+		<set name="riskSheetConsequences" inverse="true" cascade="delete-orphan,all" lazy="false">
+			<key column="FK_ID_RISKSHEET" />
+			<one-to-many class="RiskSheetConsequence" />
+		</set>
+	</class>
+</hibernate-mapping>

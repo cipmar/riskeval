@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ro.rmc.riskeval.domain">
+	<class name="RiskLevel" table="RISK_LEVEL" lazy="false">
+		<id name="id" column="ID">
+			<generator class="native" />
+		</id>
+		
+		<property name="code" column="CODE" />
+		<property name="name" column="NAME" />
+		
+		<set name="gpCouples" cascade="all" order-by="FK_id_gravity" lazy="false">
+			<key column="FK_ID_RISK_LEVEL" not-null="true"/>
+			<one-to-many class="GpCouple"/>
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- connection properties -->
+		<property name="connection.username">SYSDBA</property>
+		<property name="connection.password">masterkey</property>
+		<property name="connection.url">
+			jdbc:firebirdsql:localhost/3050:D:/Projects/JavaWorkspace/RiskEval/database/RISKEVAL.FDB
+		</property>
+		<property name="connection.driver_class">
+			org.firebirdsql.jdbc.FBDriver
+		</property>
+		<property name="dialect">
+			org.hibernate.dialect.FirebirdDialect
+		</property>
+
+		<!-- hibernate settings -->
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		<property name="use_sql_comments">true</property>
+
+		<!-- conection pool settings -->
+		<property name="connection.provider_class">
+			org.hibernate.connection.C3P0ConnectionProvider
+		</property>
+
+		<property name="c3p0.minPoolSize">5</property>
+		<property name="c3p0.timeout">1</property>
+
+		<!-- mapping resources -->
+		<mapping resource="gravity.hbm.xml" />
+		<mapping resource="probability.hbm.xml" />
+		<mapping resource="consequence.hbm.xml" />
+		<mapping resource="consequencelocation.hbm.xml" />
+		<mapping resource="riskfactor.hbm.xml" />
+		<mapping resource="company.hbm.xml" />
+		<mapping resource="section.hbm.xml" />
+		<mapping resource="sector.hbm.xml" />
+		<mapping resource="workplace.hbm.xml" />
+		<mapping resource="gpcouple.hbm.xml" />
+		<mapping resource="risklevel.hbm.xml" />
+		<mapping resource="clgcouple.hbm.xml" />
+		<mapping resource="riskssheet.hbm.xml" />
+		<mapping resource="risksheetconsequence.hbm.xml" />
+	</session-factory>
+
+</hibernate-configuration>

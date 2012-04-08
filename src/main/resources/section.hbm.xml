@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ro.rmc.riskeval.domain">
+	<class name="Section" table="SECTION" lazy="false">
+		<id name="id" column="ID">
+			<generator class="native" />
+		</id>
+
+		<property name="name" column="NAME" />
+
+		<set name="sectors" lazy="true" inverse="true"
+			order-by="name">
+			<key column="FK_id_section" />
+			<one-to-many class="Sector" />
+		</set>
+
+		<many-to-one name="company" column="FK_id_company"
+			class="Company" />
+	</class>
+</hibernate-mapping>
